@@ -7,7 +7,7 @@ REarth = 6.371*10^6; %m
 MEarth = 5.972*10^24; %kg
 
 %Display the equation which shows that the satelite height is a function of
-%the satalite's period
+%
 disp("The height of the satalite from the ground is a function of time as follows:")
 fprintf('\n')
 disp("h=(GMT^2/4pi)^1/3-R")
