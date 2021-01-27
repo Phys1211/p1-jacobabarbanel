@@ -16,7 +16,7 @@ fprintf('\n')
 
 %ask the user for the period to retrieve the height
 Time = input("Input a time (period) in seconds:  ");
-disp(sprintf("You inputted %d", Time))
+Fprintf("You inputted %d", Time)
 
 if Time >= 0
     %convert the time that was inputted to a new height value
@@ -24,7 +24,7 @@ if Time >= 0
     
     if Height >= 0
         %print the height of the satalite to the user
-        disp(sprintf ("The height is %d m", Height))
+        Fprintf ("The height is %d m", Height)
     else
       disp("This period is not valid as it would need a satalite on or below the surface of the earth")
     end
