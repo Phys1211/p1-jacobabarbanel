@@ -1,10 +1,9 @@
 % This program calculates salatalite height from a given period in meters
 
-
 % Set constants to variables for calculation
-GConstant=6.67*10^-11; %N m^2/kg^2
-REarth = 6.371*10^6; %m
-MEarth = 5.972*10^24; %kg
+gravity_constant=6.67*10^-11; %N m^2/kg^2
+radius_earth = 6.371*10^6; %m
+mass_earth = 5.972*10^24; %kg
 
 %Display the equation which shows that the satelite height is a function of
 %the satalite's period
@@ -15,16 +14,20 @@ disp("where G is the gravatational constant, M is the earth's mass, and R is the
 fprintf('\n')
 
 %ask the user for the period to retrieve the height
-Time = input("Input a time (period) in seconds:  ");
-Fprintf("You inputted %d", Time)
+time = input("Input a time (period) in seconds:  ");
+fprintf("You inputted %d", time)
+fprintf('\n')
 
-if Time >= 0
+%check to see if the input period is a positive value
+if time >= 0
     %convert the time that was inputted to a new height value
-    Height = ((GConstant*MEarth*Time^2)/(4*pi^2))^(1/3) - REarth;
+    height = ((gravity_constant*mass_earth*time^2)/(4*pi^2))^(1/3) - radius_earth;
     
-    if Height >= 0
+    
+    %check to see if the calculated height 
+    if height >= 0
         %print the height of the satalite to the user
-        Fprintf ("The height is %d m", Height)
+        fprintf ("The height is %d m", height)
     else
       disp("This period is not valid as it would need a satalite on or below the surface of the earth")
     end
@@ -33,3 +36,32 @@ else
     disp("This time is not valid")
 end
 
+% For test case I ran:
+% - negative periods, which resulted in the proper error message
+% - low periods resulting in negative heights, resulting in proper error
+% message
+% - 5565 seconds as the period (ISS) resulting in 414km of height, while
+% the ISS is 409km in height from the earths surface, rendering the code
+% useful with uncertainty
+
+
+fprintf('\n')
+
+%Here is the extension where we check the difference of altitude of a
+%satalite with a period of a solar day versus a sidereal day
+
+
+%set time and height variables
+sidereal_time = 23.93*60*60;
+solar_time = 24*60*60;
+
+sidereal_height = ((gravity_constant*mass_earth*sidereal_time^2)/(4*pi^2))^(1/3) - radius_earth;
+solar_height = ((gravity_constant*mass_earth*solar_time^2)/(4*pi^2))^(1/3) - radius_earth;
+
+%calculate difference and print
+
+height_diff = solar_height - sidereal_height;
+
+fprintf ("The height difference of a solar day satalite orbit altitude is %d m higher than a sidereal day satalite orbit altitude", height_diff)
+
+fprintf('\n')
