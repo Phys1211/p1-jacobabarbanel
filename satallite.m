@@ -47,21 +47,3 @@ end
 
 fprintf('\n')
 
-%Here is the extension where we check the difference of altitude of a
-%satalite with a period of a solar day versus a sidereal day
-
-
-%set time and height variables
-sidereal_time = 23.93*60*60;
-solar_time = 24*60*60;
-
-sidereal_height = ((gravity_constant*mass_earth*sidereal_time^2)/(4*pi^2))^(1/3) - radius_earth;
-solar_height = ((gravity_constant*mass_earth*solar_time^2)/(4*pi^2))^(1/3) - radius_earth;
-
-%calculate difference and print
-
-height_diff = solar_height - sidereal_height;
-
-fprintf ("The height difference of a solar day satalite orbit altitude is %d m higher than a sidereal day satalite orbit altitude", height_diff)
-
-fprintf('\n')
