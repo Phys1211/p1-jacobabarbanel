@@ -1,4 +1,5 @@
-% This program calculates salatalite height from a given period in meters
+% This program calculates salatallite height from a given period in meters,
+% and the the velocity of the satallite
 
 % Set constants to variables for calculation
 gravity_constant=6.67*10^-11; %N m^2/kg^2

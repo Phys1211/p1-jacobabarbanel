@@ -1,12 +1,12 @@
-% This program calculates salatalite height from a given period in meters
+% This program calculates satallite height from a given period in meters
 
 % Set constants to variables for calculation
 gravity_constant=6.67*10^-11; %N m^2/kg^2
 radius_earth = 6.371*10^6; %m
 mass_earth = 5.972*10^24; %kg
 
-%Display the equation which shows that the satelite height is a function of
-%the satalite's period
+%Display the equation which shows that the satallite height is a function of
+%the satallite's period
 disp("The height of the satalite from the ground is a function of time as follows:")
 fprintf('\n')
 disp("h=(GMT^2/4pi)^1/3-R")
@@ -26,7 +26,7 @@ if time >= 0
     
     %check to see if the calculated height 
     if height >= 0
-        %print the height of the satalite to the user
+        %print the height of the satallite to the user
         fprintf ("The height is %d m", height)
     else
       disp("This period is not valid as it would need a satalite on or below the surface of the earth")
@@ -48,7 +48,7 @@ end
 fprintf('\n')
 
 %Here is the extension where we check the difference of altitude of a
-%satalite with a period of a solar day versus a sidereal day
+%satallite with a period of a solar day versus a sidereal day
 
 
 %set time and height variables
