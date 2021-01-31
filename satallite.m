@@ -54,6 +54,13 @@ fprintf('\n')
        
         fprintf('\n')
     end
+% without the error extension I would not have used a for loop to display
+% the information and instead would have ran the following code
+
+
+% fprintf ("The altitude of this satalite from earth's surface is %d km and its velocity is %d m/s for the period of %d seconds.", ans_matrix)
+
+
 
 % For test case I ran:
 % - negative periods, which resulted in the proper error message
