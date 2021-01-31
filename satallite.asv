@@ -29,11 +29,11 @@ fprintf('\n')
     height = round(height);
     velocity = round(velocity);
     
-    ans_matrix = [height; velocity; time]
+    ans_matrix = 
     %check to see if the calculated height 
    % if height >= 0
         %print the height of the satellite to the user
-        fprintf ("The altitude of this satalite from earth's surface is %d km and its velocity is %d m/s for the period of %d seconds  \n", (ans_matrix))
+        sprintf ("The altitude of the satalite from earth's surface is %d km and its velocity is %d m/s  \n", round(height),round(velocity))
         fprintf('\n')
     %else
       %disp("This period is not valid as it would need a satalite on or below the surface of the earth")
@@ -44,14 +44,12 @@ fprintf('\n')
 %end
 
 % For test case I ran:
+% - negative periods, which resulted in the proper error message
+% - low periods resulting in negative heights, resulting in proper error
+% message
 % - 5561 seconds as the period (ISS) resulting in 412km of altitude and a velocity of 7663m/s, 
-% while the ISS is 409km in altitude from the earths surface and travels at 7660m/s
-% - 6120 seconds as the period (ISS) resulting in 859km of altitude and a velocity of 7423m/s, 
-% while the ISS is 850km in altitude from the earths surface and travels at 7430m/s
-
-% therefor code works in accuratly calculating satellite altitude from a given period in kms,
-% along with its velocity at any given point in its orbit
-
+% while the ISS is 409km in altitude from the earths surface and travels at 7660m/s, rendering the code
+% useful with uncertainty
 
 
 fprintf('\n')
