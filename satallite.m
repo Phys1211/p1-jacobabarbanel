@@ -15,7 +15,7 @@ disp("where G is the gravatational constant, M is the earth's mass, and R is the
 fprintf('\n')
 
 %ask the user for the period to retrieve the height
-time = input("Input a time(s) in seconds in the form [x,y,z] where x,y,and z are periods:  ");
+time = input("Input a period(s) in seconds in the form [x,y,z] where x,y,and z are periods:  ");
 fprintf("You inputted %d seconds \n", time)
 fprintf('\n')
 
@@ -29,21 +29,36 @@ fprintf('\n')
     height = round(height);
     velocity = round(velocity);
     
-    ans_matrix = [height; velocity; time]
-    %check to see if the calculated height 
-   % if height >= 0
-        %print the height of the satellite to the user
-        fprintf ("The altitude of this satalite from earth's surface is %d km and its velocity is %d m/s for the period of %d seconds  \n", (ans_matrix))
-        fprintf('\n')
-    %else
-      %disp("This period is not valid as it would need a satalite on or below the surface of the earth")
-    %end
+    %create a matrix that takes all the values to be used in a for loop in
+    %checking errors and reporting values back to user
+    ans_matrix = [height; velocity; time];
     
-%else
-    %disp("This time is not valid")
-%end
+    
+   %create counter and for loop to go through all the period values to
+   %report thier associated height and speed or report errors
+   counter = 1;
+   for counter = 1:length(time)
+       %time value is below 0 for the matrix element then report an error
+        if ans_matrix(3,counter) <= 0
+            fprintf ("ERROR: The period %d seconds is an invalid time.", ans_matrix(3,counter))
+        
+        %height value is below 0 for the matrix element then report an error
+        elseif ans_matrix(1, counter) <= 0
+            fprintf ("ERROR: For the period %d seconds, this results in a negative altitude, meaning the satellite would need to be below the earth's surface.", ans_matrix(3,counter))
+            
+
+        else
+            fprintf ("The altitude of this satalite from earth's surface is %d km and its velocity is %d m/s for the period of %d seconds.", ans_matrix(:,counter))
+            
+        end
+       
+        fprintf('\n')
+    end
 
 % For test case I ran:
+% - negative periods, which resulted in the proper error message
+% - low periods resulting in negative heights, resulting in proper error
+% message
 % - 5561 seconds as the period (ISS) resulting in 412km of altitude and a velocity of 7663m/s, 
 % while the ISS is 409km in altitude from the earths surface and travels at 7660m/s
 % - 6120 seconds as the period (ISS) resulting in 859km of altitude and a velocity of 7423m/s, 
