@@ -16,7 +16,7 @@ disp("where G is the gravatational constant, M is the earth's mass, and R is the
 fprintf('\n')
 
 %ask the user for the period to retrieve the height
-time = input("Input a period(s) in hours in the form [x,y,z] where x,y,and z are periods:  ");
+time = input("Input period(s) in hours in the form [x,y,z] where x,y,and z are periods:  ");
 fprintf("You inputted %d hours \n", time)
 fprintf('\n')
 
