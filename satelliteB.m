@@ -66,15 +66,15 @@ velocity = (2*pi.*(radius_earth + height)./(time.*3600))./1000;
 
 range_min = min(time)/5; %sets the period plot limits to 1/5x the min and 5x the max period
 range_max = max(time)*5;
-time_array = range_min:0.01:range_max;
+time_array = range_min:0.01:range_max; %sets a time array from the min to the max with small incriments
 
 figure(1) % altitude and period chart
 plot(sort(time),height,'b^'); %plots the period in the x-axis and altitude in y-axis, with points beign blue triangles
 hold on
 heightF = ((((gravity_constant*mass_earth).*(time_array.*3600).^2)./(4*pi^2)).^(1/3) - radius_earth)./1000;
-plot(time_array, heightF, "-")
+plot(time_array, heightF, "-") %plots height curve
 xlim([range_min, range_max]); %sets the xlimits to the range_min and range_max specified in lines 67-78
-ylim([0 inf]);
+ylim([0 inf]); %sets height limit to 0 so no negatives are added
 title('Altitude vs Period'); %adds titles and x/y labels
 xlabel('Period (Hours)');
 ylabel('Altitude (km)');
@@ -82,10 +82,10 @@ ylabel('Altitude (km)');
 figure(2) % velocity and period chart
 plot(time,velocity,'b^'); %plots the period in the x-axis and velocity in y-axis, with points beign blue triangles
 hold on
-velocityF = (2*pi.*(radius_earth + heightF)./(time_array.*3600))./1000;
-plot(time_array, velocityF, "-")
+velocityF = (2*pi.*(radius_earth + heightF)./(time_array.*3600))./1000; %states velocity for function
+plot(time_array, velocityF, "-") %plots curve
 xlim([range_min range_max]); %sets the xlimits to the range_min and range_max specified in lines 69-70
-ylim([0 inf]);
+ylim([0 inf]); %ensure no negative velocities are added to chart
 title('Velocity vs Period') %adds titles and x/y labels
 xlabel('Period (Hours)')
 ylabel('Velocity (km/s)')
