@@ -68,14 +68,14 @@ range_min = min(time)/5; %sets the period plot limits to 1/5x the min and 5x the
 range_max = max(time)*5;
 
 figure(1) % altitude and period chart
-plot(time,height,'b^'); %plots the period in the x-axis and altitude in y-axis, with points beign blue triangles
+plot(sort(time),height,'b--^'); %plots the period in the x-axis and altitude in y-axis, with points beign blue triangles
 xlim([range_min, range_max]); %sets the xlimits to the range_min and range_max specified in lines 69-70
 title('Altitude vs Period'); %adds titles and x/y labels
 xlabel('Period (Hours)');
 ylabel('Altitude (km)');
 
 figure(2) % velocity and period chart
-plot(time,velocity,'b^'); %plots the period in the x-axis and velocity in y-axis, with points beign blue triangles
+plot(sort(time),velocity,'b--^'); %plots the period in the x-axis and velocity in y-axis, with points beign blue triangles
 xlim([range_min range_max]); %sets the xlimits to the range_min and range_max specified in lines 69-70
 title('Velocity vs Period') %adds titles and x/y labels
 xlabel('Period (Hours)')
