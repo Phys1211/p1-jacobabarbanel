@@ -60,23 +60,23 @@ counter = 1;
 % fprintf ("The altitude of this satalite from earth's surface is %d km and its velocity is %d m/s for the period of %d seconds.", ans_matrix)
 
 
-time = time(time>1.4166) %takes only the time values that are above 1.416hrs which is the minimum period for the altitude to be positive
+time = time(time>1.4166); %takes only the time values that are above 1.416hrs which is the minimum period for the altitude to be positive
 height = ((((gravity_constant*mass_earth).*(time.*3600).^2)./(4*pi^2)).^(1/3) - radius_earth)./1000; %restates the altitude and velocity equations so each array length is equal
 velocity = (2*pi.*(radius_earth + height)./(time.*3600))./1000;
 
-range_min = min(time)/5 %sets the period plot limits to 1/5x the min and 5x the max period
-range_max = max(time)*5
+range_min = min(time)/5; %sets the period plot limits to 1/5x the min and 5x the max period
+range_max = max(time)*5;
 
 figure(1) % altitude and period chart
-plot(time,height,'b^') %plots the period in the x-axis and altitude in y-axis, with points beign blue triangles
-xlim([range_min, range_max]) %sets the xlimits to the range_min and range_max specified in lines 69-70
-title('Altitude vs Period') %adds titles and x/y labels
-xlabel('Period (Hours)')
-ylabel('Altitude (km)')
+plot(time,height,'b^'); %plots the period in the x-axis and altitude in y-axis, with points beign blue triangles
+xlim([range_min, range_max]); %sets the xlimits to the range_min and range_max specified in lines 69-70
+title('Altitude vs Period'); %adds titles and x/y labels
+xlabel('Period (Hours)');
+ylabel('Altitude (km)');
 
 figure(2) % velocity and period chart
-plot(time,velocity,'b^') %plots the period in the x-axis and velocity in y-axis, with points beign blue triangles
-xlim([range_min range_max]) %sets the xlimits to the range_min and range_max specified in lines 69-70
+plot(time,velocity,'b^'); %plots the period in the x-axis and velocity in y-axis, with points beign blue triangles
+xlim([range_min range_max]); %sets the xlimits to the range_min and range_max specified in lines 69-70
 title('Velocity vs Period') %adds titles and x/y labels
 xlabel('Period (Hours)')
 ylabel('Velocity (km/s)')
@@ -84,20 +84,20 @@ ylabel('Velocity (km/s)')
 figure(3) %earth, the ISS and accompanying satellites
 [x,y,z] = sphere(); %first graph a sphere to represent the earth, label it set its radius to the earth's radius
 r = (radius_earth)/1000;
-surf(r*x,r*y,r*z, 'DisplayName',"EARTH")%credit from matlab link http://www.mathworks.com.au/help/techdoc/ref/sphere.html
+surf(r*x,r*y,r*z, 'DisplayName',"EARTH");%credit from matlab link http://www.mathworks.com.au/help/techdoc/ref/sphere.html
 hold on %for ISS 2d plot
 r2 = (radius_earth)/1000+408; %set the radius of the circle to be 408km (altitude of ISS) plus the radius of the earth
 th = 0:pi/50:2*pi; %sets a series of points around a circle from 0 to pi in an array
 xunit = r2 * cos(th); %sets the x and y equations around the circle
 yunit = r2 * sin(th);
 zunit = zeros(size(th)); %sets the zunit to be an array the same size as x and y but 0 
-plot3(xunit, yunit, zunit,'--', 'DisplayName',"ISS", 'LineWidth', 2)
+plot3(xunit, yunit, zunit,'--', 'DisplayName',"ISS", 'LineWidth', 2);
 for counter2 = 1:length(time)
     hold on
     r3 = (radius_earth)/1000+height(counter2); %sets the radius of the satellite circle to the height plus the earth's radius
     th = 0:pi/50:2*pi; %sets a series of points around a circle from 0 to pi in an array
-    xunit = r3 * cos(th)%sets the x and y equations around the circle
-    yunit = r3 * sin(th)
+    xunit = r3 * cos(th);%sets the x and y equations around the circle
+    yunit = r3 * sin(th);
     zunit = zeros(size(th)); %sets the zunit to be an array the same size as x and y but 0 
     plot3(xunit, yunit, zunit, 'DisplayName',strcat(string(time(counter2))," hours period"))
 end
